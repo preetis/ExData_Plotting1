@@ -34,11 +34,6 @@ web site</a>:
 </ol>
 
 ## Loading the data
-
-
-
-
-
 When loading the dataset into R, please consider the following:
 
 * The dataset has 2,075,259 rows and 9 columns. First
@@ -56,7 +51,6 @@ Date/Time classes in R using the `strptime()` and `as.Date()`
 functions.
 
 * Note that in this dataset missing values are coded as `?`.
-
 
 ## Making Plots
 
@@ -111,4 +105,42 @@ The four plots that you will need to construct are shown below.
 ### Plot 4
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+
+# #################################################################################################################
+<b>EXPLORATORY ANALYSIS FOR DATASET- "Individual household electric power consumption Data Set" FROM UCI </b>
+<b>Assumption:</b>
+  * All the R files and data files are in the working directory
+  * The code does not use dev.copy() as the result of this function may not be identical to the original as mentioned in the coursework
+  * Based on initial analysis of data: 
+      * all distinct month and date values in the Date column in the file, it was observed that single digit month/date value are not padded with extra 0. Hence, the logic to filter the records based on date uses the date value- '1/2/2007' and '2/2/2007' 
+      * No null values identified in the data for the date range specified and hence no specific missing value handling has been done
+
+<b>
+<ol>
+<li>Source the R script file- prepData.R:
+    * The script file sets the working directory where all the data and R files are present
+    * Load the data file using the sqldf function and read only those records into a data frame-"df" where date is either '1 Feb 2007' and '2 Feb 2007'
+    * Adds a new column- "dt" to the dataframe which is the datetimestamp value computed based on concatenation of Date and Time column
+    * Once all required columns are computed, the function plotMenu() is called by passing the data frame- "df" to the function
+</li>
+<li> Function plotMenu in file- plotMenu.R:
+    * Provides a user driven menu to generate the required graph on screen and also provides option to save the graph as png
+    * User needs to select one out of the 5 options displayed on the screen to generate the :
+        <ol>
+        <li> Plot 1 : Generates Plot 1</li>
+        <li> Plot 2 : Generates Plot 2</li>
+        <li> Plot 3 : Generates Plot 3 </li>
+        <li> Plot 4 : Generates Plot 4 </li>
+        <li> Exit : Exits from the interactive menu </li>
+        </ol>   
+    * The option to save the graph as png is provided once the plot is generated on screen. 
+</li>
+<li> Based on the plot selected by the user to be generated, different plotting functions are called:
+        * plot1 function to plot the graph shown in Plot 1 : Detailed description present in plot1.R
+        * plot2 function to plot the graph shown in Plot 2 : Detailed description present in plot2.R
+        * plot3 function to plot the graph shown in Plot 3 : Detailed description present in plot3.R
+        * plot4 function to plot the graph shown in Plot 4 : Detailed description present in plot4.R
+    * Any png file saved will be present in the working directory and with the name "plot<#>.png" with width 480 and height 480 pixel and a grey background as shown in the sample graphs
+</li>
+</ol>
 
